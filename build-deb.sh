@@ -23,7 +23,6 @@ Depends: libc6, libgl1, libglu1-mesa, libsdl2-2.0-0, libsdl2-mixer-2.0-0, libsdl
 Section: games
 Priority: optional
 Homepage: ${HOMEPAGE}
-License: ${LICENSE}
 EOF
 
 # Create necessary directories
@@ -35,7 +34,7 @@ mkdir -p ${BUILD_DIR}/usr/share/${PKG_NAME}
 
 # Download and extract the game
 echo "Downloading SuperTux Advance..."
-wget -O ${PKG_NAME}.zip "https://github.com/JaredTweed/supertux-advance/releases/download/v${PKG_VERSION}/sta-${PKG_VERSION}.zip"
+wget -O ${PKG_NAME}.zip "https://github.com/JaredTweed/SuperTuxAdvance-metadata/releases/download/v${PKG_VERSION}-zip/sta-${PKG_VERSION}.zip"
 unzip ${PKG_NAME}.zip -d ${BUILD_DIR}/usr/share/${PKG_NAME}
 chmod +x ${BUILD_DIR}/usr/share/${PKG_NAME}/sta/sta
 
@@ -47,7 +46,6 @@ exec ./sta
 EOF
 chmod +x ${BUILD_DIR}/usr/bin/${PKG_NAME}
 
-
 # Create .desktop file
 cat <<EOF > ${BUILD_DIR}/usr/share/applications/io.github.JaredTweed.SuperTuxAdvance.desktop
 [Desktop Entry]
@@ -58,11 +56,13 @@ Type=Application
 Categories=Game;ArcadeGame;PlatformGame;
 EOF
 
-# Download icon (replace with actual link if needed)
-wget -O ${BUILD_DIR}/usr/share/icons/hicolor/scalable/apps/io.github.JaredTweed.SuperTuxAdvance.svg "https://raw.githubusercontent.com/JaredTweed/SuperTuxAdvance-metadata/e37b7f0b2e5c184736f8adf5fe86bbb807e91643/io.github.JaredTweed.SuperTuxAdvance.svg"
+# Download and place icon
+wget -O ${BUILD_DIR}/usr/share/icons/hicolor/scalable/apps/io.github.JaredTweed.SuperTuxAdvance.svg \
+    "https://raw.githubusercontent.com/JaredTweed/SuperTuxAdvance-metadata/main/io.github.JaredTweed.SuperTuxAdvance.svg"
 
-# Download metainfo (replace with actual link if needed)
-wget -O ${BUILD_DIR}/usr/share/metainfo/io.github.JaredTweed.SuperTuxAdvance.metainfo.xml "https://raw.githubusercontent.com/JaredTweed/SuperTuxAdvance-metadata/e37b7f0b2e5c184736f8adf5fe86bbb807e91643/io.github.JaredTweed.SuperTuxAdvance.metainfo.xml"
+# Download and place metainfo
+wget -O ${BUILD_DIR}/usr/share/metainfo/io.github.JaredTweed.SuperTuxAdvance.metainfo.xml \
+    "https://raw.githubusercontent.com/JaredTweed/SuperTuxAdvance-metadata/main/io.github.JaredTweed.SuperTuxAdvance.metainfo.xml"
 
 # Set correct permissions
 chmod -R 755 ${BUILD_DIR}/usr
@@ -74,5 +74,9 @@ dpkg-deb --build ${BUILD_DIR}
 mv ${BUILD_DIR}.deb ${PKG_NAME}-${PKG_VERSION}_${ARCH}.deb
 rm -rf ${BUILD_DIR}
 rm ${PKG_NAME}.zip
+
+# Update desktop database
+update-desktop-database ~/.local/share/applications/
+sudo update-desktop-database
 
 echo "✅ Done! Your .deb package is ready: ${PKG_NAME}-${PKG_VERSION}_${ARCH}.deb"
