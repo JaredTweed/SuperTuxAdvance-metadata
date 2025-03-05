@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop-application" xmlns="http://www.freedesktop.org/standards/metainfo" xmlns:lc="http://www.linuxfoundation.org/lsb-build-desktop">
+<component type="desktop-application" xmlns="http://www.freedesktop.org/standards/metainfo">
   <!--
     This file is a metainfo (AppStream) manifest, describing SuperTux Advance.
     Reference: https://www.freedesktop.org/software/appstream/docs/
@@ -13,9 +13,6 @@
 
   <!-- See https://spdx.org/licenses/ for a list of valid licenses -->
   <metadata_license>CC0-1.0</metadata_license>
-
-  <!-- The project_group is optional.
-       This is the name of your GitHub organization or something else. -->
 
   <name>SuperTux Advance</name>
 
@@ -37,16 +34,12 @@
     </p>
   </description>
 
-  <!-- A few recommended categories:
-       Game, ArcadeGame, PlatformGame, etc.
-       See: https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#tag-categories -->
   <categories>
     <category>Game</category>
     <category>ArcadeGame</category>
     <category>PlatformGame</category>
   </categories>
 
-  <!-- You can provide multiple screenshots. Use URLs or local references. -->
   <screenshots>
     <screenshot type="default">
       <image>https://github.com/JaredTweed/supertux-advance/releases/download/v0.2.48/1.png</image>
@@ -62,18 +55,23 @@
     </screenshot>
   </screenshots> 
 
-  <!-- URLs to your homepage, bug tracker, help, etc.
-       Use one or more <url type="...">. -->
   <url type="homepage">https://github.com/SuperTuxAdvance/supertux-advance</url>
 
-  <!-- The release section is optional but recommended. -->
   <releases>
     <release version="0.2.48" date="2025-02-26" />
   </releases>
 
-  <!-- OARS Content Rating (IMPORTANT for Flathub approval) - See: https://gitlab.com/oars/oars for more info. -->
+  <!-- OARS Content Rating -->
   <content_rating type="oars-1.1">
     <content_attribute id="violence-cartoon">mild</content_attribute>
   </content_rating>
+
+  <!-- Tells GNOME Software how to launch the app by referencing the .desktop file -->
+  <launchable type="desktop-id">io.github.JaredTweed.SuperTuxAdvance.desktop</launchable>
+
+  <!-- Provides info that the binary is also named io.github.JaredTweed.SuperTuxAdvance -->
+  <provides>
+    <binary>io.github.JaredTweed.SuperTuxAdvance</binary>
+  </provides>
 
 </component>
