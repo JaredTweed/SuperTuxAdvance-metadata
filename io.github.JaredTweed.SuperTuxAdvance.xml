@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application" xmlns="http://www.freedesktop.org/standards/metainfo">
+
   <!--
-    This file is a metainfo (AppStream) manifest, describing SuperTux Advance.
+    This file is an AppStream (metainfo) manifest describing SuperTux Advance.
     Reference: https://www.freedesktop.org/software/appstream/docs/
-    License for metadata can be CC0, or the same as your application.
   -->
 
+  <!-- MUST match your .desktop file name minus the .desktop extension -->
   <id>io.github.JaredTweed.SuperTuxAdvance</id>
 
-  <!-- License for the app -->
+  <!-- Licenses -->
+  <metadata_license>CC0-1.0</metadata_license>
   <project_license>AGPL-3.0-or-later</project_license>
 
-  <!-- See https://spdx.org/licenses/ for a list of valid licenses -->
-  <metadata_license>CC0-1.0</metadata_license>
+  <!-- Developer name or organization. Optional, but helps show who makes the app -->
+  <developer_name>Jared Tweed</developer_name>
 
+  <!-- REQUIRED: The name of your app that GNOME Software displays -->
   <name>SuperTux Advance</name>
 
-  <!-- Short summary of the application -->
+  <!-- REQUIRED: A short, one-line summary or tagline of your app's purpose -->
   <summary>A fun fan-made platformer starring Tux.</summary>
 
-  <!-- Detailed description -->
+  <!-- REQUIRED: A more detailed description with paragraphs -->
   <description>
     <p>
       SuperTux Advance is a 2D platformer starring Tux. It brings new levels,
@@ -29,17 +32,33 @@
     <p>
       This game is fully open-source and supports mods and bonus level packs.
       Make new levels or even your own game with it! Be sure to share your
-      creations and feedback on our 
+      creations and feedback on our
       <a href="https://discord.gg/bcyC2Q6a9x">Discord server</a>.
     </p>
   </description>
 
+  <!-- Categories: Must be recognized by AppStream (Game, ArcadeGame, etc.) -->
   <categories>
     <category>Game</category>
     <category>ArcadeGame</category>
     <category>PlatformGame</category>
   </categories>
 
+  <!-- OARS Content Rating (Recommended by GNOME Software & Flathub) -->
+  <content_rating type="oars-1.1">
+    <content_attribute id="violence-cartoon">mild</content_attribute>
+  </content_rating>
+
+  <!-- The <launchable> tag tells GNOME Software which desktop file to launch. -->
+  <launchable type="desktop-id">io.github.JaredTweed.SuperTuxAdvance.desktop</launchable>
+
+  <!-- 'provides' helps the store know which binaries are installed. 
+       Typically matches your .desktop Exec name or the binary itself. -->
+  <provides>
+    <binary>io.github.JaredTweed.SuperTuxAdvance</binary>
+  </provides>
+
+  <!-- If you have multiple screenshots, list them here. Use immutable URLs if possible. -->
   <screenshots>
     <screenshot type="default">
       <image>https://github.com/JaredTweed/supertux-advance/releases/download/v0.2.48/1.png</image>
@@ -53,25 +72,14 @@
     <screenshot>
       <image>https://github.com/JaredTweed/supertux-advance/releases/download/v0.2.48/4.png</image>
     </screenshot>
-  </screenshots> 
+  </screenshots>
 
-  <url type="homepage">https://github.com/SuperTuxAdvance/supertux-advance</url>
+  <!-- (Optional) More helpful links: homepage, bugtracker, donation page, etc. -->
+  <url type="homepage">https://github.com/KelvinShadewing/supertux-advance</url>
 
+  <!-- Release info (date, version) helps software centers display the "Version" field. -->
   <releases>
     <release version="0.2.48" date="2025-02-26" />
   </releases>
-
-  <!-- OARS Content Rating -->
-  <content_rating type="oars-1.1">
-    <content_attribute id="violence-cartoon">mild</content_attribute>
-  </content_rating>
-
-  <!-- Tells GNOME Software how to launch the app by referencing the .desktop file -->
-  <launchable type="desktop-id">io.github.JaredTweed.SuperTuxAdvance.desktop</launchable>
-
-  <!-- Provides info that the binary is also named io.github.JaredTweed.SuperTuxAdvance -->
-  <provides>
-    <binary>io.github.JaredTweed.SuperTuxAdvance</binary>
-  </provides>
 
 </component>
